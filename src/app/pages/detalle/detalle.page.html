@@ -1,0 +1,66 @@
+<app-header [showBackButton]="!mainPage" titulo="detalle"></app-header>
+
+<ion-content [fullscreen]="true">
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+    <ion-fab-button>
+      <ion-icon name="wifi"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-list side="top">
+      <ion-fab-button href="https://github.com" target="_blank">
+        <ion-icon name="logo-github"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button href="https://www.instagram.com" target="_blank">
+        <ion-icon name="logo-instagram"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button href="https://twitter.com" target="_blank">
+        <ion-icon name="logo-twitter"></ion-icon>
+      </ion-fab-button>
+    </ion-fab-list>
+  </ion-fab>
+
+  <ion-card *ngIf="noticia">
+    <ion-card-header></ion-card-header>
+    <ion-card-content>
+
+      <swiper-container pagination="true">
+        <swiper-slide class="slide-full" *ngFor="let slide of noticia.images">
+            <ion-img [src]="slide" class="slide-image" alt="Imagen del slide"></ion-img>
+        </swiper-slide>
+      </swiper-container>
+
+      <ion-card-title>{{ noticia.title }}</ion-card-title>
+      <ion-card-subtitle>{{ noticia.subtitle }}</ion-card-subtitle>
+      <ion-chip>
+        <ion-icon name="{{noticia.section.icon}}" color="primary"></ion-icon>
+        <ion-label>{{noticia.section.section}}</ion-label>
+      </ion-chip>
+      <p>{{noticia.author}}</p>
+      <ion-card-subtitle>{{noticia.date}}</ion-card-subtitle>
+      <ion-accordion-group>
+      <ion-accordion>
+        <ion-item slot="header" color="light">
+          <ion-label>Contenido</ion-label>
+        </ion-item>
+        <div class="ion-padding" slot="content">{{ noticia.content }}</div>
+      </ion-accordion>
+      </ion-accordion-group>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Comentarios</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>Nombre</ion-card-title>
+          <ion-card-subtitle>Email</ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-card-content>Comentario</ion-card-content>
+        </ion-card-content>
+      </ion-card>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

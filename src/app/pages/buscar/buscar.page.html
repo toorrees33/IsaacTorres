@@ -1,0 +1,26 @@
+<app-header titulo="buscar"></app-header>
+
+
+<ion-content [fullscreen]="true">
+  <ion-searchbar animated="true" (ionChange)="buscar( $event)"></ion-searchbar>
+  <ion-list id="lista">
+    <ion-card *ngFor="let noticia of noticiasAux | filtro: textoBuscar" (click)="openDetails(noticia)">
+      <ion-card-header>
+        <ion-img src="{{noticia.images[0]}}"></ion-img>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-card-title>{{ noticia.title }}</ion-card-title>
+        <ion-card-subtitle>{{ noticia.author }}</ion-card-subtitle>
+      </ion-card-content>
+    </ion-card>
+  </ion-list>
+
+  <ion-infinite-scroll (ionInfinite)="onIonInfinite($event)">
+    <ion-infinite-scroll-content
+      loading-spinner="crescent"
+      loadingText="Cargando más...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
+</ion-content>
+<ion-footer></ion-footer>

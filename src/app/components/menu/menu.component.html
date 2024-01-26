@@ -1,0 +1,28 @@
+<ion-menu side="end" menuId="menuLateral" contentId="principal">
+  <ion-header>
+    <ion-toolbar>
+      <ion-avatar id="avatartop"><img src="../../../assets/icon/favicon.png" height="64" width="64"/></ion-avatar>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-list>
+      <ion-menu-toggle *ngFor="let c of componentes">
+        <ion-item [routerLink]="c.ruta" detail="true">
+          <ion-icon color="primary" slot="start" [name]="c.icono"></ion-icon>
+          <ion-label>
+            {{ c.nombre.toUpperCase() }}
+          </ion-label>
+        </ion-item>
+      </ion-menu-toggle>
+      <ion-menu-toggle>
+        <ion-item *ngFor="let section of sections"  (click)="goToSection(section.section.toLowerCase())" detail="true" >
+          <ion-avatar>
+            <ion-icon color="primary" name="{{section.icon}}" style="font-size: 25px"/>
+          </ion-avatar>
+          <ion-label>{{section.section.toUpperCase()}}</ion-label>
+        </ion-item>
+      </ion-menu-toggle>
+
+    </ion-list>
+  </ion-content>
+</ion-menu>

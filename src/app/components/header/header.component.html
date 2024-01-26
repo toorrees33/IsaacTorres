@@ -1,0 +1,19 @@
+<ion-header class="ion-no-border" >
+  <ion-toolbar>
+    <ion-buttons slot="start" *ngIf="!showBackButton">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <div (click)="redirectToInicio()">
+      <ion-avatar>
+        <img id="logo" src="../../../assets/icon/favicon.png" height="64" width="64"/>
+      </ion-avatar>
+    </div>
+
+    <ion-buttons slot="end">
+      <ion-menu-button menu="menuLateral" color="primary">
+      </ion-menu-button>
+    </ion-buttons>
+
+
+  </ion-toolbar>
+</ion-header>
